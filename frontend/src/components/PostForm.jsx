@@ -1,10 +1,24 @@
+// PostForm.js
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import postSlice from "./postSlice";
-import { useState } from "react";
+import { addPost } from "../postSlice";
 
-export default function PostForm() {
+const PostForm = () => {
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
-  return <div></div>;
-}
+  const handleSubmit = () => {
+    if (content.trim() === "") return;
+    dispatch(addPost({ id: Date.now(), content }));
+    setContent("");
+  };
+
+  return (
+    <div>
+    <h2>Create a Post</h2>
+      <textarea value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+    <button onClick={handleSubmit}>Submit</button>
+  </div>);
+};
+
+export default PostForm;
