@@ -1,5 +1,4 @@
-import { createSlice } from "@reactjs/toolkit";
-
+import { createSlice } from "@reduxjs/toolkit";
 const postSlice = createSlice({
   name: "post",
   initialState: {
@@ -25,4 +24,3 @@ const postSlice = createSlice({
 
 export const { addPost, editPost, deletePost } = postSlice.actions;
 export default postSlice.reducer;
-  
