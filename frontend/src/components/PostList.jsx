@@ -1,15 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deletePost, editPost } from "../postSlice";
+import { deletePost } from "../postSlice";
 
-const PostList = () => {
+const PostList = (onEditClick) => {
   const posts = useSelector((state) => state.posts.posts);
   const dispatch = useDispatch();
   const handleDelete = (id) => {
     dispatch(deletePost(id));
   };
-  const handleEdit = (id) => {
-    dispatch(editPost(id));
-  };
+  // const onEditClick = (id) => {
+  //   dispatch(editPost(id));
+  // };
 
   return (
     <div>
@@ -19,7 +19,7 @@ const PostList = () => {
           <li key={post.id}>
             {post.content}{" "}
             <button onClick={() => handleDelete(post.id)}>Delete</button>
-            <button onClick={() => handleEdit(post.id)}>Edit Post</button>
+            <button onClick={() => onEditClick(post.id)}>Edit</button>
           </li>
         ))}
       </ul>
